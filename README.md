@@ -5,6 +5,9 @@ springboot整合mysql + mybatis的demo
 ## 前言  
 如果你还没安装mysql，可以看我之前写的docker部署mysql的文章，安装起来简单快捷。  
 文章地址：https://blog.csdn.net/weixin_43841693/article/details/102862938  
+
+Springboot整合mysql和mybatis步骤  
+文章地址：https://blog.csdn.net/weixin_43841693/article/details/102921770
   
 ## demo准备工作  
 1、首先我们执行sql脚本，在mysql中创建user_info表，根据自己需要新增修改数据
