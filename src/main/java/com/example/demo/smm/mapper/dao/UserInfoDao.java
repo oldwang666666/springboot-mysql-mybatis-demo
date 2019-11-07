@@ -12,7 +12,7 @@ import java.util.List;
  * @Date 2019年11月5日
  */
 @Repository
-public interface UserInfoMapper {
+public interface UserInfoDao {
 
     UserInfo getUserInfoById(Long id);
 
