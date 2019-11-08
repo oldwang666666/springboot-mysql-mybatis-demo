@@ -17,4 +17,8 @@ public interface UserInfoDao {
     UserInfo getUserInfoById(Long id);
 
     List<UserInfo> getUserInfoList(UserInfo userInfo);
+
+    int insertUserInfo(UserInfo userInfo);
+
+    int insertUserInfoCondition(UserInfo userInfo);
 }

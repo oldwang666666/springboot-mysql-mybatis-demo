@@ -26,4 +26,32 @@ public interface UserInfoService {
      * @return
      */
     List<UserInfo> getUserInfoList(UserInfo userInfo);
+
+    /**
+     * 插入用户信息
+     * @param userInfo
+     * @return
+     */
+    Long insertUserInfo(UserInfo userInfo);
+
+    /**
+     * 动态插入用户信息
+     * @param userInfo
+     * @return
+     */
+    Long insertUserInfoCondition(UserInfo userInfo);
+
+    /**
+     * 插入用户信息，异常回滚测试方法
+     * @param userInfo
+     * @return
+     */
+    Long insertUserInfoExceptionRollBack(UserInfo userInfo);
+
+    /**
+     * 插入用户信息，异常不回滚测试方法
+     * @param userInfo
+     * @return
+     */
+    Long insertUserInfoExceptionNoRollBack(UserInfo userInfo);
 }

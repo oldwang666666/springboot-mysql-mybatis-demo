@@ -33,4 +33,41 @@
         </where>
     </select>
 
+    <!-- 插入user_info 使用selectKey的方式返回自增长的主键的值-->
+    <insert id="insertUserInfo"  parameterType="com.example.demo.smm.mapper.entity.UserInfo" >
+        insert into user_info(
+            user_name, sex, create_date
+        )
+        values(
+            #{userName, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER}, NOW()
+        )
+        <selectKey keyColumn="id" resultType="Long" keyProperty="id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <!-- sql动态插入  useGeneratedKeys="true" keyProperty="id" 和 selectKey一样都是返回插入数据的id -->
+    <insert id="insertUserInfoCondition"  parameterType="com.example.demo.smm.mapper.entity.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info(
+            <trim suffixOverrides=",">
+                <if test="userName != null and userName != ''">
+                    user_name,
+                </if>
+                <if test="sex!=null">
+                    sex,
+                </if>
+            </trim>
+        )
+        values(
+            <trim suffixOverrides=",">
+                <if test="userName != null and userName != ''">
+                    #{userName, jdbcType=VARCHAR},
+                </if>
+                <if test="sex!=null">
+                    #{sex, jdbcType=INTEGER},
+                </if>
+            </trim>
+        )
+    </insert>
+
 </mapper>
