@@ -54,4 +54,19 @@ public interface UserInfoService {
      * @return
      */
     Long insertUserInfoExceptionNoRollBack(UserInfo userInfo);
+
+    /**
+     * 查询用户 - ReTry测试方法
+     * @param num
+     * @return
+     * @throws Exception
+     */
+    UserInfo getHttpReTryTest(Integer num);
+
+    /**
+     * 插入用户 - ReTry测试方法
+     * @param userInfo
+     * @return
+     */
+    Long insertHttpReTryTest(UserInfo userInfo);
 }

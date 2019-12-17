@@ -4,6 +4,8 @@ import com.example.demo.smm.mapper.dao.UserInfoDao;
 import com.example.demo.smm.mapper.entity.UserInfo;
 import com.example.demo.smm.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -76,5 +78,20 @@ public class UserInfoServiceImpl implements UserInfoService {
         throw new RuntimeException("强制抛出异常，insertUserInfoExceptionNoRollBack不回滚");
     }
 
+    //最大重试3次，每次重试延迟2s->3s->4.5s
+    @Retryable(value = Exception.class,maxAttempts = 3,backoff = @Backoff(delay = 2000,multiplier = 1.5))
+    @Override
+    public UserInfo getHttpReTryTest(Integer num) {
+        num ++;
+        throw new RuntimeException("强制抛出异常，getUserInfoByIdReTryTest  num:" + num);
+    }
+
+    //最大重试3次，每次重试延迟2s->3s->4.5s
+    @Retryable(value = Exception.class,maxAttempts = 3,backoff = @Backoff(delay = 2000,multiplier = 1.5))
+    @Override
+    public Long insertHttpReTryTest(UserInfo userInfo) {
+        System.out.println("调用http方法");
+        throw new RuntimeException("强制抛出异常，insertHttpReTryTest  result:" + userInfo.toString());
+    }
 
 }

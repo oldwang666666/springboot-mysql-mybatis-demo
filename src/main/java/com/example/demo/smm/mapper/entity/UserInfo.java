@@ -75,4 +75,15 @@ public class UserInfo implements Serializable {
     public void setCreateDateStr(String createDateStr) {
         this.createDateStr = createDateStr;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", sex=" + sex +
+                ", createDate=" + createDate +
+                ", createDateStr='" + createDateStr + '\'' +
+                '}';
+    }
 }

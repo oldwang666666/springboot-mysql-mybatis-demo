@@ -2,12 +2,10 @@ package com.example.demo.smm.controller;
 
 import com.example.demo.smm.mapper.entity.UserInfo;
 import com.example.demo.smm.service.UserInfoService;
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -90,4 +88,23 @@ public class UserInfoController {
         return userInfoService.insertUserInfoExceptionNoRollBack(userInfo);
     }
 
+    /**
+     * 查询用户 - ReTry测试方法
+     * @return
+     */
+    @RequestMapping("/getHttpReTryTest")
+    public UserInfo getHttpReTryTest() {
+        return userInfoService.getHttpReTryTest(0);
+    }
+
+    /**
+     * 插入用户 - ReTry测试方法
+     * @return
+     */
+    @RequestMapping("/insertHttpReTryTest")
+    public Long insertHttpReTryTest(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName("insertHttpReTryTest");
+        return userInfoService.insertHttpReTryTest(userInfo);
+    }
 }
