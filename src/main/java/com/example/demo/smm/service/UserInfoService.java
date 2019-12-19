@@ -61,7 +61,7 @@ public interface UserInfoService {
      * @return
      * @throws Exception
      */
-    UserInfo getHttpReTryTest(Integer num);
+    UserInfo getHttpReTryTest(Integer num) throws Exception;
 
     /**
      * 插入用户 - ReTry测试方法

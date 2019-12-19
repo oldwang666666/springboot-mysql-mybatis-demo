@@ -93,8 +93,9 @@ public class UserInfoController {
      * @return
      */
     @RequestMapping("/getHttpReTryTest")
-    public UserInfo getHttpReTryTest() {
-        return userInfoService.getHttpReTryTest(0);
+    public UserInfo getHttpReTryTest(Integer num) throws Exception {
+        UserInfo userInfo = userInfoService.getHttpReTryTest(num);
+        return userInfo;
     }
 
     /**
